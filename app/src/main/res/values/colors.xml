@@ -102,4 +102,13 @@
 
     </array>
 
+    <!-- Missing colors from dependencies -->
+    <color name="color_00000000">#00000000</color>
+    <color name="color_E5E5E5">#E5E5E5</color>
+    <color name="dkplayer_theme_color">#F80000</color>
+    <color name="dkplayer_theme_color_translucent">#80F80000</color>
+    <color name="dkplayer_background_color">#CC000000</color>
+    <color name="exo_styled_error_message_background">#CC000000</color>
+    <color name="li_row_selector">#33FFFFFF</color>
+
 </resources>

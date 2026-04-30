@@ -71,4 +71,10 @@
     <dimen name="vs_640">640mm</dimen>
     <dimen name="vs_720">720mm</dimen>
     <dimen name="vs_960">960mm</dimen>
+
+    <!-- Missing dimens from dependencies -->
+    <dimen name="dkplayer_controller_seekbar_size_n">8dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="sp_14">14sp</dimen>
 </resources>

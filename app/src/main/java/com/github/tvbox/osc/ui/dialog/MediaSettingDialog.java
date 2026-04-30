@@ -14,9 +14,10 @@ import com.github.tvbox.osc.BuildConfig;
 import com.github.tvbox.osc.R;
 import com.github.tvbox.osc.util.HawkUtils;
 import com.github.tvbox.osc.widget.OnItemClickListener;
-import com.github.tvbox.osc.widget.OnItemSelectedListener;
 import com.owen.tvrecyclerview.widget.SimpleOnItemListener;
 import com.owen.tvrecyclerview.widget.TvRecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -56,28 +57,39 @@ public class MediaSettingDialog extends BaseDialog {
         });
 
 
-        listMediaContent.setOnItemListener((OnItemClickListener) (tvRecyclerView, view, i) -> {
-            //处理点击事件
-            MediaSettingEntity item = contentAdapter.getItem(i);
-            MediaSettingEnum mediaSettingEnum = MediaSettingEnum.valueOf(item.tag);
-            switch (mediaSettingEnum) {
-                case IjkMediaCodecMode:
-                    HawkUtils.nextIJKCodec();
-                    break;
-                case IjkCache:
-                    HawkUtils.nextIJKCache();
-                    break;
-                case ExoRenderer:
-                    HawkUtils.nextExoRenderer();
-                    break;
-                case ExoRendererMode:
-                    HawkUtils.nextExoRendererMode();
-                    break;
-                case VodPlayerPreferred:
-                    HawkUtils.nextVodPlayerPreferred();
-                    break;
+        listMediaContent.setOnItemListener(new TvRecyclerView.OnItemListener() {
+            @Override
+            public void onItemPreSelected(TvRecyclerView parent, View itemView, int position) {
             }
-            contentAdapter.refreshNotifyItemChanged(i);
+
+            @Override
+            public void onItemSelected(TvRecyclerView parent, View itemView, int position) {
+            }
+
+            @Override
+            public void onItemClick(TvRecyclerView parent, View itemView, int position) {
+                //处理点击事件
+                MediaSettingEntity item = contentAdapter.getItem(position);
+                MediaSettingEnum mediaSettingEnum = MediaSettingEnum.valueOf(item.tag);
+                switch (mediaSettingEnum) {
+                    case IjkMediaCodecMode:
+                        HawkUtils.nextIJKCodec();
+                        break;
+                    case IjkCache:
+                        HawkUtils.nextIJKCache();
+                        break;
+                    case ExoRenderer:
+                        HawkUtils.nextExoRenderer();
+                        break;
+                    case ExoRendererMode:
+                        HawkUtils.nextExoRendererMode();
+                        break;
+                    case VodPlayerPreferred:
+                        HawkUtils.nextVodPlayerPreferred();
+                        break;
+                }
+                contentAdapter.refreshNotifyItemChanged(position);
+            }
         });
     }
 

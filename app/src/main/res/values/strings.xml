@@ -270,4 +270,9 @@
 
     <!-- 结束 视频设置 相关配置 -->
 
+    <!-- Missing strings from dependencies -->
+    <string name="brvah_loading">Loading…</string>
+    <string name="brvah_load_failed">Load Failed</string>
+    <string name="brvah_load_end">No More Data</string>
+
 </resources>
