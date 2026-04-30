@@ -16,3 +16,4 @@
         putDefault(HawkConfig.SEARCH_VIEW, 2);    // Text or Picture
 
     }
+"# myfonmi" 
