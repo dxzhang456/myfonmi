@@ -8,6 +8,7 @@ def static buildTime() {
 }
 
 android {
+    namespace 'com.github.tvbox.osc'
     compileSdk 34
 
     defaultConfig {
@@ -30,6 +31,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
         release {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             minifyEnabled true

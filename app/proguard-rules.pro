@@ -220,6 +220,15 @@
 # quickjs引擎
 -keep class com.whl.quickjs.** {*;}
 
+# TvRecyclerView 兼容层 - 保留所有公共API
+-keep class com.owen.tvrecyclerview.widget.** { *; }
+-keep interface com.owen.tvrecyclerview.widget.** { *; }
+
+# 保留 BuildConfig
+-keep class com.github.tvbox.osc.BuildConfig { *; }
+-keep class com.whl.quickjs.android.BuildConfig { *; }
+-keep class org.xwalk.core.BuildConfig { *; }
+
 # 支持影视的ali相关的jar
 -keep class com.google.gson.**{*;}
 # 某些类会反射调用zxing导致生成阿里云二维码报错
