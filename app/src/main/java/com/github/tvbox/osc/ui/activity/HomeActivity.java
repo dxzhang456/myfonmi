@@ -61,6 +61,9 @@ import com.github.tvbox.osc.util.FileUtils;
 import com.github.tvbox.osc.util.HawkConfig;
 import com.github.tvbox.osc.util.LOG;
 import com.github.tvbox.osc.viewmodel.SourceViewModel;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 import com.orhanobut.hawk.Hawk;
 import com.owen.tvrecyclerview.widget.TvRecyclerView;
 import com.owen.tvrecyclerview.widget.V7GridLayoutManager;
@@ -413,6 +416,19 @@ public class HomeActivity extends BaseActivity {
                 LOG.e("有");
             } else {
                 LOG.e("无");
+                XXPermissions.with(this)
+                        .permission(Permission.Group.STORAGE)
+                        .request(new OnPermissionCallback() {
+                            @Override
+                            public void onGranted(List<String> permissions, boolean all) {
+                                LOG.e("获取存储权限成功");
+                            }
+
+                            @Override
+                            public void onDenied(List<String> permissions, boolean never) {
+                                LOG.e("获取存储权限失败");
+                            }
+                        });
             }
             if (Hawk.get(HawkConfig.HOME_DEFAULT_SHOW, false)) {
                 jumpActivity(LivePlayActivity.class);
